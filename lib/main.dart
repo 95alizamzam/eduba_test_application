@@ -2,13 +2,19 @@ import 'package:eduba_test_app/core/service_locator/sl.dart';
 import 'package:eduba_test_app/features/videos/presentation/bloc/videos_bloc_bloc.dart';
 import 'package:eduba_test_app/static_screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/strings/strings.dart';
 import 'core/themes/light_theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   setup();
   runApp(const MyApp());
 }
